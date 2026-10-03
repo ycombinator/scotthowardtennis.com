@@ -50,7 +50,6 @@ html[data-editorial-notes-hidden] [data-editorial-placeholder] { display: inline
 .site-header { border-bottom: 1px solid var(--line); }
 .header-layout { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 100px; }
 .brand { display: flex; gap: 12px; align-items: center; text-decoration: none; font-size: 1.3rem; font-weight: 600; letter-spacing: -.03em; line-height: 1.2; }
-.brand img { width: 36px; height: 36px; }
 .brand small { display: block; font-size: .62rem; letter-spacing: .25em; margin-top: 6px; }
 .desktop-nav { display: flex; align-items: center; gap: 26px; }
 .desktop-nav a { font-size: .86rem; text-decoration: none; padding-block: 12px; }
@@ -160,18 +159,6 @@ summary { cursor: pointer; padding-block: 10px; }
 .info-card h2 { font-size: 2rem; margin-block: 16px 24px; }
 .info-card > p:not(.eyebrow) { color: var(--muted); }
 .info-card h3 + p { margin-top: 12px; }
-.payment-layout { display: grid; grid-template-columns: minmax(0, 200px) minmax(0, 1fr); align-items: start; gap: 16px; }
-.payment-layout > * { width: 100%; max-width: 200px; min-width: 0; }
-.payment-details { max-width: none; }
-.payment-details > .text-link { white-space: nowrap; }
-.venmo-desktop { width: 100%; max-width: 200px; text-align: center; }
-.venmo-logo { width: 110px; height: auto; }
-.venmo-wordmark { display: flex; justify-content: center; width: 100%; max-width: 200px; margin-top: 16px; }
-.venmo-button { gap: 24px; padding: 18px 22px; }
-.venmo-desktop .venmo-qr { width: 100%; height: auto; aspect-ratio: 1; background: #fff; }
-.venmo-desktop figcaption { margin-top: 10px; font-size: .8rem; color: var(--muted); }
-.venmo-mobile { display: none; }
-.venmo-mobile .button { margin-block: 18px 10px; }
 .payment-alternatives { margin-bottom: 16px; }
 .payment-alternatives p { color: var(--muted); }
 .rate-list { margin: 0; }
@@ -180,11 +167,6 @@ summary { cursor: pointer; padding-block: 10px; }
 .rate-list .rate-subtext { grid-column: 1 / -1; color: var(--muted); font-size: .75rem; }
 .plain-list { padding-left: 20px; color: var(--muted); }
 .plain-list li { margin-bottom: 8px; }
-.bring-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
-.bring-layout h2 { margin-top: 18px; }
-.bring-list { padding: 0; list-style: none; margin: 0; }
-.bring-list li { border-bottom: 1px solid #cdd4c4; padding: 14px 0; }
-.bring-list span { color: var(--muted); font-size: .75rem; padding-right: 24px; }
 .contact-methods { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
 .contact-method { padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); }
 .contact-method h2 { font-size: 1.8rem; margin-block: 18px 14px; }
@@ -224,7 +206,6 @@ input:disabled, select:disabled, textarea:disabled { opacity: 1; -webkit-text-fi
 .skip-link:focus { top: 12px; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 @media (max-width: 1050px) {
-  .payment-layout { grid-template-columns: minmax(0, 1fr); gap: 20px; }
   .container { width: min(1200px, calc(100% - 48px)); }
   .desktop-nav { gap: 16px; }
   .desktop-nav a { font-size: .78rem; }
@@ -260,10 +241,6 @@ input:disabled, select:disabled, textarea:disabled { opacity: 1; -webkit-text-fi
   .interest-select-arrow { flex-shrink: 0; }
   .interest-select-control.has-selection-summary:focus-within .interest-select-summary { outline: 3px solid #527523; outline-offset: 5px; }
   .form-select-help { display: none; }
-  .payment-layout { grid-template-columns: minmax(0, 1fr); gap: 0; }
-  .payment-layout > * { max-width: none; }
-  .venmo-desktop, .venmo-wordmark { display: none; }
-  .venmo-mobile { display: block; }
   .desktop-nav { display: none; }
   .header-layout { min-height: 84px; position: relative; }
   .mobile-menu { display: block; }
@@ -273,7 +250,7 @@ input:disabled, select:disabled, textarea:disabled { opacity: 1; -webkit-text-fi
   .mobile-menu nav a { display: block; padding: 12px 14px; text-decoration: none; }
   .mobile-menu nav a[aria-current] { background: var(--tint); border-radius: 4px; }
   .hero { padding-block: 42px; }
-  .hero-grid, .split-layout, .program-overview, .program-detail, .contact-layout, .bring-layout { grid-template-columns: 1fr; gap: 32px; }
+  .hero-grid, .split-layout, .program-overview, .program-detail, .contact-layout { grid-template-columns: 1fr; gap: 32px; }
   .hero-copy h1 { margin-top: 16px; }
   .hero-photo { max-width: 380px; justify-self: center; }
   .authority-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }

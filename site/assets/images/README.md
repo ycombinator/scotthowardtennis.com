@@ -16,8 +16,8 @@ The two teaching videos are linked from Scott’s original homepage. Their local
 
 ## Venmo QR code
 
-`venmo-qr.png` is a locally generated QR code encoding `venmo://paycharge?txn=pay&recipients=scotthowardtennis`, with a four-module quiet zone and medium error correction. The same app payment link is used by the mobile payment button. No payment amount is prefilled.
+`venmo-qr.png` is a locally generated QR code encoding `venmo://paycharge?txn=pay&recipients=scotthowardtennis`, with a four-module quiet zone and medium error correction. No payment amount is prefilled. This asset is retained but is no longer displayed on the site.
 
 ## Venmo wordmarks
 
-`venmo-logo-blue.png` and `venmo-logo-white.png` are unmodified wordmarks from [Venmo’s official brand kit](https://venmo.com/about/brand). The blue logo identifies the desktop QR payment option; the white logo labels the mobile app payment button. Preserve their proportions and clear space.
+`venmo-logo-blue.png` and `venmo-logo-white.png` are unmodified wordmarks from [Venmo’s official brand kit](https://venmo.com/about/brand). These assets are retained but are no longer displayed on the site. Preserve their proportions and clear space.
