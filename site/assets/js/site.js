@@ -85,3 +85,19 @@ document.querySelectorAll('.video-launch').forEach((link) => {
     iframe.focus();
   });
 });
+
+// Show selected option names over the native mobile picker instead of its item count.
+document.querySelectorAll('.interest-select-control').forEach((control) => {
+  const select = control.querySelector('select');
+  const summary = control.querySelector('.interest-select-summary-text');
+  const updateSummary = () => {
+    const labels = Array.from(select.selectedOptions, (option) => option.textContent.trim());
+    summary.textContent = labels.length ? labels.join(', ') : 'Select all that apply';
+  };
+  updateSummary();
+  control.classList.add('has-selection-summary');
+  select.addEventListener('change', updateSummary);
+  select.addEventListener('input', updateSummary);
+  window.addEventListener('pageshow', updateSummary);
+  select.form?.addEventListener('reset', () => setTimeout(updateSummary, 0));
+});

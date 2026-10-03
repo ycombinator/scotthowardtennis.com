@@ -162,7 +162,7 @@ summary { cursor: pointer; padding-block: 10px; }
 .info-card h3 + p { margin-top: 12px; }
 .venmo-desktop { width: 200px; margin-top: 20px; text-align: center; }
 .venmo-logo { width: 110px; height: auto; }
-.venmo-desktop .venmo-logo { margin: 16px auto 0; }
+.venmo-wordmark { display: flex; justify-content: center; width: 200px; max-width: 100%; margin-top: 16px; }
 .venmo-button { gap: 24px; padding: 18px 22px; }
 .venmo-desktop .venmo-qr { width: 200px; height: 200px; background: #fff; }
 .venmo-desktop figcaption { margin-top: 10px; font-size: .8rem; color: var(--muted); }
@@ -171,9 +171,9 @@ summary { cursor: pointer; padding-block: 10px; }
 .payment-alternatives { margin-block: 24px 16px; }
 .payment-alternatives p { color: var(--muted); }
 .rate-list { margin: 0; }
-.rate-list > div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-block: 14px; border-top: 1px solid var(--line); font-size: .9rem; }
+.rate-list > div { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 16px; padding-block: 14px; border-top: 1px solid var(--line); font-size: .9rem; }
 .rate-list dd { margin: 0; color: var(--draft); }
-.rate-subtext { display: block; margin-top: 4px; color: var(--muted); font-size: .75rem; }
+.rate-list .rate-subtext { grid-column: 1 / -1; color: var(--muted); font-size: .75rem; }
 .plain-list { padding-left: 20px; color: var(--muted); }
 .plain-list li { margin-bottom: 8px; }
 .bring-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
@@ -194,7 +194,10 @@ summary { cursor: pointer; padding-block: 10px; }
 fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 .contact-fields { display: grid; gap: 20px; }
+.form-grid > *, .contact-layout > * { min-width: 0; }
 .form-wide { grid-column: 1 / -1; }
+.interest-select-control { position: relative; min-width: 0; }
+.interest-select-summary { display: none; }
 .form-select-help { margin-top: 8px; font-size: .75rem; color: var(--muted); }
 select[multiple] { padding: 6px; }
 select[multiple] option { padding: 8px; }
@@ -227,7 +230,32 @@ input:disabled, select:disabled, textarea:disabled { opacity: 1; -webkit-text-fi
   .split-layout, .contact-layout { gap: 36px; }
 }
 @media (max-width: 780px) {
-  .venmo-desktop { display: none; }
+  .interest-select-control.has-selection-summary select {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .interest-select-control.has-selection-summary .interest-select-summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 48px;
+    padding: 12px 14px;
+    border: 1px solid #bac3b0;
+    border-radius: 5px;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: .86rem;
+    pointer-events: none;
+  }
+  .interest-select-summary-text { flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  .interest-select-arrow { flex-shrink: 0; }
+  .interest-select-control.has-selection-summary:focus-within .interest-select-summary { outline: 3px solid #527523; outline-offset: 5px; }
+  .form-select-help { display: none; }
+  .venmo-desktop, .venmo-wordmark { display: none; }
   .venmo-mobile { display: block; }
   .desktop-nav { display: none; }
   .header-layout { min-height: 84px; position: relative; }
