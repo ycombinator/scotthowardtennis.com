@@ -33,7 +33,7 @@ Use short paragraphs and descriptive headings. Label unconfirmed claims, rates, 
 
 ## Testing Guidelines
 
-No automated test framework or coverage target is configured. Check all five pages at desktop and mobile widths, keyboard navigation, image loading, links, and fragment targets. Verify relative URLs under `/scotthowardtennis.com/`. Preview contact fields must remain disabled until connected to a submission service.
+No automated test framework or coverage target is configured. Check all five pages at desktop and mobile widths, keyboard navigation, image loading, links, and fragment targets. Verify relative URLs under `/scotthowardtennis.com/`. Preview contact fields are editable; keep submission disabled until connected to a submission service.
 
 ## Commit & Pull Request Guidelines
 

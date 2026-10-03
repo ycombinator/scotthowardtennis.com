@@ -14,9 +14,9 @@ Open http://localhost:8000/. Edit the HTML in `site/`, shared styles in `site/as
 
 ## Review scope
 
-Use **Editorial notes** in the top status bar to show or hide review commentary across all five pages. Notes start visible, and your preference persists between pages and reloads when browser storage is available. The preview status bar stays visible.
+Use **Editorial notes** in the top status bar to show or hide review commentary across all five pages. Notes appear as yellow sticky notes with locally hosted handwriting, start visible, and your preference persists between pages and reloads when browser storage is available. The preview status bar stays visible.
 
-Contact options and the inquiry form are previews; no personal information is transmitted. Unconfirmed content is labeled. The form fields are intentionally disabled until a submission provider is connected. Photos are sourced in `site/assets/images/README.md`.
+Call, text, WhatsApp, and email CTAs link to Scott’s published contact details. Phone numbers are not displayed. WhatsApp availability still needs confirmation. The inquiry form remains a preview; entries are not transmitted. Unconfirmed content is labeled. Form fields are available for trying the layout; the submit button stays disabled until a submission provider is connected. Photos and video thumbnails are sourced in `site/assets/images/README.md`. Teaching clips load on click, with direct YouTube links available as a fallback. Desktop shows a local Venmo QR code; mobile uses the same direct Venmo Pay app link with Scott as recipient and no amount prefilled. This requires the Venmo app; verify the app handoff on a phone before publishing.
 
 - [Implementation plan](docs/website-implementation-plan.md)
 - [Website brief](docs/report.md)
