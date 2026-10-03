@@ -14,6 +14,8 @@ Open http://localhost:8000/. Edit the HTML in `site/`, shared styles in `site/as
 
 ## Review scope
 
+Use **Editorial notes** in the top status bar to show or hide review commentary across all five pages. Notes start visible, and your preference persists between pages and reloads when browser storage is available. The preview status bar stays visible.
+
 Contact options and the inquiry form are previews; no personal information is transmitted. Unconfirmed content is labeled. The form fields are intentionally disabled until a submission provider is connected. Photos are sourced in `site/assets/images/README.md`.
 
 - [Implementation plan](docs/website-implementation-plan.md)
