@@ -69,7 +69,7 @@ html[data-editorial-notes-hidden] [data-editorial-placeholder] { display: inline
 .photo img { border-radius: var(--radius); object-fit: cover; }
 .photo figcaption { color: var(--muted); font-size: .75rem; margin-top: 12px; }
 /* Stack the photo frames in a fixed window so fading never shifts the layout. */
-.hero-photo { --sequence-ratio: 4 / 5; width: 100%; max-width: 420px; justify-self: end; }
+.hero-photo { --sequence-ratio: 3 / 4; width: 100%; max-width: 420px; justify-self: end; }
 .photo-sequence .image-window { position: relative; aspect-ratio: var(--sequence-ratio); overflow: hidden; border-radius: var(--radius); background: #142a20; }
 /* Each crop centers Scott's body and preserves the source image's proportions. */
 .photo-sequence img {
@@ -84,10 +84,11 @@ html[data-editorial-notes-hidden] [data-editorial-placeholder] { display: inline
   opacity: 0;
   transition: opacity .7s ease-in-out;
 }
-.hero-photo img:nth-child(1) { --frame-width: 159.8214%; --frame-height: 142.8571%; --subject-x: -65%; --subject-y: -58%; }
-.hero-photo img:nth-child(2) { --frame-width: 129.4192%; --frame-height: 151.5152%; --subject-x: -60%; --subject-y: -65%; }
-.hero-photo img:nth-child(3) { --frame-width: 136.7560%; --frame-height: 142.8571%; --subject-x: -62%; --subject-y: -59%; }
-.hero-photo img:nth-child(4) { --frame-width: 148.0758%; --frame-height: 138.8889%; --subject-x: -65%; --subject-y: -50%; }
+/* Wider serve crops include extended arms, rackets, and feet with edge clearance. */
+.hero-photo img:nth-child(1) { --frame-width: 102.1111%; --frame-height: 100.0000%; --subject-x: -50%; --subject-y: -50%; }
+.hero-photo img:nth-child(2) { --frame-width: 101.2346%; --frame-height: 111.1111%; --subject-x: -50%; --subject-y: -49%; }
+.hero-photo img:nth-child(3) { --frame-width: 121.7687%; --frame-height: 102.0408%; --subject-x: -46%; --subject-y: -50%; }
+.hero-photo img:nth-child(4) { --frame-width: 113.7222%; --frame-height: 100.0000%; --subject-x: -50%; --subject-y: -50%; }
 .coaching-photo { --sequence-ratio: .95; }
 .coaching-photo img:nth-child(1) { --frame-width: 158.2905%; --frame-height: 100%; --subject-x: -50%; --subject-y: -50%; }
 .coaching-photo img:nth-child(2) { --frame-width: 158.2905%; --frame-height: 100%; --subject-x: -54%; --subject-y: -50%; }

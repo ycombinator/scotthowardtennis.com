@@ -104,7 +104,11 @@ document.querySelectorAll('.interest-select-control').forEach((control) => {
 
 // Load all frames before starting; leave a static photo if loading fails.
 document.querySelectorAll('[data-photo-sequence]').forEach((sequence) => {
-  const frames = Array.from(sequence.querySelectorAll('.image-window img'));
+  const frames = Array.from(sequence.querySelectorAll('.image-window img')).sort((a, b) => {
+    const filename = (frame) => frame.getAttribute('src').split('/').pop();
+    return filename(a).localeCompare(filename(b), 'en', { numeric: true });
+  });
+  frames.forEach((frame, index) => frame.classList.toggle('is-active', index === 0));
   const toggle = sequence.querySelector('.sequence-toggle');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let current = 0;
