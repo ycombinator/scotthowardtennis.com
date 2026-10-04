@@ -110,20 +110,36 @@ document.querySelectorAll('[data-photo-sequence]').forEach((sequence) => {
   });
   frames.forEach((frame, index) => frame.classList.toggle('is-active', index === 0));
   const toggle = sequence.querySelector('.sequence-toggle');
+  const progressRing = toggle.querySelector('.sequence-ring-fill');
+  const frameDuration = 3000;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let current = 0;
   let paused = reducedMotion.matches;
-  let timer;
+  let animationFrame;
+  let frameStarted;
+
+  // One clock drives both the clockwise ring and the next photo.
+  const advancePlayback = (now) => {
+    const progress = Math.min((now - frameStarted) / frameDuration, 1);
+    progressRing.setAttribute('stroke-dashoffset', String(100 * (1 - progress)));
+    if (progress === 1) {
+      frames[current].classList.remove('is-active');
+      current = (current + 1) % frames.length;
+      frames[current].classList.add('is-active');
+      frameStarted = now;
+      progressRing.setAttribute('stroke-dashoffset', '100');
+    }
+    animationFrame = requestAnimationFrame(advancePlayback);
+  };
 
   const updatePlayback = () => {
-    clearInterval(timer);
-    toggle.textContent = paused ? 'Play sequence' : 'Pause sequence';
+    cancelAnimationFrame(animationFrame);
+    progressRing.setAttribute('stroke-dashoffset', '100');
+    toggle.classList.toggle('is-paused', paused);
+    toggle.setAttribute('aria-label', paused ? 'Play photo sequence' : 'Pause photo sequence');
     if (!paused && !document.hidden) {
-      timer = setInterval(() => {
-        frames[current].classList.remove('is-active');
-        current = (current + 1) % frames.length;
-        frames[current].classList.add('is-active');
-      }, 2400);
+      frameStarted = performance.now();
+      animationFrame = requestAnimationFrame(advancePlayback);
     }
   };
 
