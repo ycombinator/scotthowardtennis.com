@@ -101,3 +101,41 @@ document.querySelectorAll('.interest-select-control').forEach((control) => {
   window.addEventListener('pageshow', updateSummary);
   select.form?.addEventListener('reset', () => setTimeout(updateSummary, 0));
 });
+
+// Load all frames before starting; leave a static photo if loading fails.
+document.querySelectorAll('[data-photo-sequence]').forEach((sequence) => {
+  const frames = Array.from(sequence.querySelectorAll('.image-window img'));
+  const toggle = sequence.querySelector('.sequence-toggle');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let current = 0;
+  let paused = reducedMotion.matches;
+  let timer;
+
+  const updatePlayback = () => {
+    clearInterval(timer);
+    toggle.textContent = paused ? 'Play sequence' : 'Pause sequence';
+    if (!paused && !document.hidden) {
+      timer = setInterval(() => {
+        frames[current].classList.remove('is-active');
+        current = (current + 1) % frames.length;
+        frames[current].classList.add('is-active');
+      }, 2400);
+    }
+  };
+
+  Promise.all(frames.map((frame) => frame.decode())).then(() => {
+    toggle.hidden = false;
+    toggle.addEventListener('click', () => {
+      paused = !paused;
+      updatePlayback();
+    });
+    reducedMotion.addEventListener('change', () => {
+      paused = reducedMotion.matches;
+      updatePlayback();
+    });
+    document.addEventListener('visibilitychange', updatePlayback);
+    updatePlayback();
+  }).catch(() => {
+    // The first frame remains visible without an incomplete animation.
+  });
+});

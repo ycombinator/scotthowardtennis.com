@@ -21,3 +21,11 @@ The two teaching videos are linked from Scott’s original homepage. Their local
 ## Venmo wordmarks
 
 `venmo-logo-blue.png` and `venmo-logo-white.png` are unmodified wordmarks from [Venmo’s official brand kit](https://venmo.com/about/brand). These assets are retained but are no longer displayed on the site. Preserve their proportions and clear space.
+
+## Serve sequence
+
+`serve-1.jpg`, `serve-2a.jpg`, `serve-3.jpg`, and `serve-4.jpg` were supplied by the user in `artifacts/` for the home page serving sequence. Published copies preserve the original images. The home page uses individual CSS crops in a shared 4:5 window to keep Scott's body centered across the sequence. Confirm launch permission with Scott along with the other photos.
+
+## Coaching sequence
+
+`coaching-1.jpg` through `coaching-4.jpg` were supplied by the user in `artifacts/` for Coaching Programs. Published copies preserve the original images. Individual CSS crops keep Scott centered in a shared .95 aspect-ratio window at desktop and mobile sizes. Confirm launch permission with Scott along with the other photos.

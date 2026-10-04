@@ -68,10 +68,36 @@ html[data-editorial-notes-hidden] [data-editorial-placeholder] { display: inline
 .hero-caption { font-size: .78rem; color: var(--muted); margin-top: 20px; }
 .photo img { border-radius: var(--radius); object-fit: cover; }
 .photo figcaption { color: var(--muted); font-size: .75rem; margin-top: 12px; }
-/* The source hero is a split banner. Frame its right-hand photo without changing the asset. */
-.hero-photo { width: 100%; max-width: 420px; justify-self: end; }
-.hero-photo .image-window { aspect-ratio: .82; overflow: hidden; border-radius: var(--radius); }
-.hero-photo img { width: 218.2%; max-width: none; height: 100%; object-fit: fill; transform: translateX(-54.17%); border-radius: 0; }
+/* Stack the photo frames in a fixed window so fading never shifts the layout. */
+.hero-photo { --sequence-ratio: 4 / 5; width: 100%; max-width: 420px; justify-self: end; }
+.photo-sequence .image-window { position: relative; aspect-ratio: var(--sequence-ratio); overflow: hidden; border-radius: var(--radius); background: #142a20; }
+/* Each crop centers Scott's body and preserves the source image's proportions. */
+.photo-sequence img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--frame-width);
+  height: var(--frame-height);
+  max-width: none;
+  transform: translate(var(--subject-x), var(--subject-y));
+  border-radius: 0;
+  opacity: 0;
+  transition: opacity .7s ease-in-out;
+}
+.hero-photo img:nth-child(1) { --frame-width: 159.8214%; --frame-height: 142.8571%; --subject-x: -65%; --subject-y: -58%; }
+.hero-photo img:nth-child(2) { --frame-width: 129.4192%; --frame-height: 151.5152%; --subject-x: -60%; --subject-y: -65%; }
+.hero-photo img:nth-child(3) { --frame-width: 136.7560%; --frame-height: 142.8571%; --subject-x: -62%; --subject-y: -59%; }
+.hero-photo img:nth-child(4) { --frame-width: 148.0758%; --frame-height: 138.8889%; --subject-x: -65%; --subject-y: -50%; }
+.coaching-photo { --sequence-ratio: .95; }
+.coaching-photo img:nth-child(1) { --frame-width: 158.2905%; --frame-height: 100%; --subject-x: -50%; --subject-y: -50%; }
+.coaching-photo img:nth-child(2) { --frame-width: 158.2905%; --frame-height: 100%; --subject-x: -54%; --subject-y: -50%; }
+.coaching-photo img:nth-child(3) { --frame-width: 150.0544%; --frame-height: 100%; --subject-x: -55%; --subject-y: -50%; }
+.coaching-photo img:nth-child(4) { --frame-width: 158.2905%; --frame-height: 100%; --subject-x: -56%; --subject-y: -50%; }
+.photo-sequence img.is-active { opacity: 1; }
+.photo-sequence figcaption { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.sequence-toggle { min-height: 44px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 6px; background: transparent; color: var(--green); font-size: .75rem; cursor: pointer; }
+.sequence-toggle:hover { background: var(--tint); }
+.sequence-toggle[hidden] { display: none; }
 .authority-section { border-block: 1px solid var(--line); padding-block: 30px 36px; }
 .section-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 48px; margin-bottom: 36px; }
 .section-heading h2 { margin-top: 14px; }
@@ -144,7 +170,6 @@ summary { cursor: pointer; padding-block: 10px; }
 .timeline-item p { color: var(--muted); }
 .timeline-item .text-link { display: inline-block; margin-top: 14px; }
 .program-overview { display: grid; grid-template-columns: .9fr 1.1fr; gap: 30px; align-items: start; }
-.program-overview .photo img { aspect-ratio: .95; }
 .program-overview .audience-grid { grid-template-columns: repeat(2, 1fr); }
 .program-overview .audience-card { padding: 22px; }
 .program-overview .card-number { padding-bottom: 14px; }
@@ -271,7 +296,6 @@ input:disabled, select:disabled, textarea:disabled { opacity: 1; -webkit-text-fi
   .page-intro { padding-block: 42px 30px; }
   .split-layout .photo img { aspect-ratio: 1.4; }
   .timeline-item { grid-template-columns: 1fr; gap: 18px; }
-  .program-overview .photo img { aspect-ratio: 1.5; }
   .program-detail { padding-block: 36px; }
   .program-detail h2 { max-width: 560px; }
   .rates-grid { grid-template-columns: 1fr; }
