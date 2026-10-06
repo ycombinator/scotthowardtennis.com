@@ -12,44 +12,13 @@ if (menu) {
   });
 }
 
-// Review notes are visible by default, including when JavaScript is unavailable.
-const editorialToggle = document.querySelector('.editorial-toggle');
-const editorialStorageKey = 'scott-howard-tennis.editorial-notes';
-
-if (editorialToggle) {
-  const setEditorialNotes = (show) => {
-    document.documentElement.toggleAttribute('data-editorial-notes-hidden', !show);
-    editorialToggle.setAttribute('aria-pressed', String(show));
-  };
-
-  try {
-    setEditorialNotes(localStorage.getItem(editorialStorageKey) !== 'hidden');
-  } catch {
-    // The toggle still works when browser storage is unavailable.
-    setEditorialNotes(true);
-  }
-  editorialToggle.hidden = false;
-
-  editorialToggle.addEventListener('click', () => {
-    const show = editorialToggle.getAttribute('aria-pressed') !== 'true';
-    setEditorialNotes(show);
-    try {
-      localStorage.setItem(editorialStorageKey, show ? 'shown' : 'hidden');
-    } catch {
-      // Keep the current page usable even if the preference cannot be saved.
-    }
+// Keep fragment targets clear of the sticky header, including when its height changes.
+const header = document.querySelector('.site-header');
+if (header && typeof ResizeObserver !== 'undefined') {
+  const headerObserver = new ResizeObserver(() => {
+    document.documentElement.style.setProperty('--header-height', `${header.getBoundingClientRect().height}px`);
   });
-}
-
-// Account for the status bar's wrapped height when scrolling to page sections.
-const editorialBar = document.querySelector('.preview-banner');
-if (editorialBar && typeof ResizeObserver !== 'undefined') {
-  const observer = new ResizeObserver(() => {
-    document.documentElement.style.setProperty(
-      '--editorial-bar-height', `${editorialBar.getBoundingClientRect().height}px`
-    );
-  });
-  observer.observe(editorialBar);
+  headerObserver.observe(header);
 }
 
 // The sketch allows typing without sending an inquiry.
