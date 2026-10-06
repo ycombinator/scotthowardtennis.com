@@ -26,6 +26,6 @@ The two teaching videos are linked from Scott’s original homepage. Their local
 
 `serve-1.jpg`, `serve-2.jpg`, `serve-3.jpg`, and `serve-4.jpg` were supplied by the user in `artifacts/` for the home page serving sequence. Published copies preserve the original images. The home page uses individual CSS crops in a shared 3:4 window to preserve Scott's full body and racket across the sequence. Confirm launch permission with Scott along with the other photos.
 
-## Coaching sequence
+## Coaching photos
 
-`coaching-1.jpg` through `coaching-4.jpg` were supplied by the user in `artifacts/` for Coaching Programs. Published copies preserve the original images. Individual CSS crops keep Scott centered in a shared .95 aspect-ratio window at desktop and mobile sizes. Confirm launch permission with Scott along with the other photos.
+`coaching-1.jpg` through `coaching-4.jpg` were supplied by the user in `artifacts/` for Coaching Programs. Published copies preserve the original images. Coaching Programs now displays only `coaching-4.jpg`, with a .95 aspect-ratio crop that keeps Scott centered at desktop and mobile sizes. Confirm launch permission with Scott along with the other photos.
