@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+"""Reject environment secrets even when force-added to Git."""
+
+import subprocess
+import sys
+from pathlib import PurePosixPath
+
+staged = subprocess.check_output([
+    "git", "diff", "--cached", "--name-only", "--diff-filter=ACMR", "-z",
+]).decode().split("\0")
+blocked = [
+    name for name in staged
+    if name and (
+        PurePosixPath(name).name == ".env"
+        or (
+            PurePosixPath(name).name.startswith(".env.")
+            and PurePosixPath(name).name != ".env.example"
+        )
+    )
+]
+if blocked:
+    print("Commit blocked: environment secrets must not be committed.", file=sys.stderr)
+    for name in blocked:
+        print(f"  {name}", file=sys.stderr)
+    sys.exit(1)

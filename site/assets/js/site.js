@@ -21,10 +21,8 @@ if (header && typeof ResizeObserver !== 'undefined') {
   headerObserver.observe(header);
 }
 
-// The sketch allows typing without sending an inquiry.
-document.querySelectorAll('[data-preview-form]').forEach((form) => {
-  form.addEventListener('submit', (event) => event.preventDefault());
-});
+// Resize the embedded inquiry form, including its thank-you screen.
+window.Tally?.loadEmbeds();
 
 // Keep page loads lightweight: create a YouTube player only on request.
 document.querySelectorAll('.video-launch').forEach((link) => {
@@ -53,22 +51,6 @@ document.querySelectorAll('.video-launch').forEach((link) => {
     frame.replaceChildren(iframe);
     iframe.focus();
   });
-});
-
-// Show selected option names over the native mobile picker instead of its item count.
-document.querySelectorAll('.interest-select-control').forEach((control) => {
-  const select = control.querySelector('select');
-  const summary = control.querySelector('.interest-select-summary-text');
-  const updateSummary = () => {
-    const labels = Array.from(select.selectedOptions, (option) => option.textContent.trim());
-    summary.textContent = labels.length ? labels.join(', ') : 'Select all that apply';
-  };
-  updateSummary();
-  control.classList.add('has-selection-summary');
-  select.addEventListener('change', updateSummary);
-  select.addEventListener('input', updateSummary);
-  window.addEventListener('pageshow', updateSummary);
-  select.form?.addEventListener('reset', () => setTimeout(updateSummary, 0));
 });
 
 // Load all frames before starting; leave a static photo if loading fails.

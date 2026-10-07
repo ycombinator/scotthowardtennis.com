@@ -218,6 +218,9 @@ summary { cursor: pointer; padding-block: 10px; }
 .contact-layout h2 { margin-block: 14px 20px; }
 .contact-layout > div > p:not(.eyebrow) { color: var(--muted); }
 .contact-photo img { max-height: 760px; object-position: center top; }
+.inquiry-form { margin-top: 28px; }
+.inquiry-form iframe { display: block; width: 100%; border: 0; }
+.inquiry-form > p { margin-top: 12px; }
 .form-preview { margin-top: 28px; }
 .form-preview .draft-note { margin-bottom: 24px; }
 fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
