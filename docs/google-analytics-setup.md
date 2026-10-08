@@ -3,10 +3,9 @@
 Tracks [issue #1](https://github.com/ycombinator/scotthowardtennis.com/issues/1).
 
 The shared script is wired into all five pages with the owner-supplied GA4 Web
-stream measurement ID `G-5LXQYH65JB`. Collection is enabled on hosted pages once
-these changes are deployed. Local previews remain excluded. Live Realtime/DebugView
-verification and confirmation of the stream settings remain pending; local tests
-do not prove delivery to GA4.
+stream measurement ID `G-5LXQYH65JB`. Collection is enabled on hosted pages.
+Local previews remain excluded. The user confirmed live GA4 verification after
+following the verification instructions; see the verification record below.
 
 ## Property and stream
 
@@ -80,9 +79,10 @@ workflow:
    `contact_method`, and `map_click` with `map_provider=google_maps`, in Realtime.
    Check that no automatic outbound `click` events send contact URLs. Avoid sending
    an actual message or inquiry as part of this click check.
-4. For parameter inspection in **DebugView**, use the Google Analytics Debugger
-   browser extension during the verification session. Disable it afterward; do not
-   permanently enable debug mode for all visitors.
+4. For parameter inspection in **DebugView**, connect the deployed site through
+   [Google Tag Assistant](https://tagassistant.google.com/), then open Admin →
+   Data display → DebugView and select the debug device. Disconnect Tag Assistant
+   afterward; do not permanently enable debug mode for all visitors.
 5. Serve `site/` locally with `python3 -m http.server 8000 --directory site`.
    Confirm every page and contact/map activation sends no Google tag or analytics
    collection requests on `http://localhost:8000/` and `http://127.0.0.1:8000/`.
@@ -91,6 +91,15 @@ workflow:
 
 Preview labels and `noindex` metadata remain in place. Only `site/` is deployed;
 setup notes and tests stay outside the published directory.
+
+## Verification record
+
+- On 2026-10-08, the user confirmed live GA4 verification with “Verified” after
+  receiving the page-view and contact/map event verification instructions.
+- Measurement ID: `G-5LXQYH65JB`.
+- Implementation revision: `344f26f` (`feat: add GA4 page and contact tracking`).
+- This records user-confirmed verification. No DebugView screenshots or individual
+  event results were supplied, and the agent did not independently inspect GA4.
 
 ## References
 
