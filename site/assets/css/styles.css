@@ -120,7 +120,7 @@ p { overflow-wrap: break-word; }
 .audience-card:hover { border-color: var(--green); background: #f4f5e9; }
 .card-number { font-size: .73rem; color: var(--muted); padding-bottom: 30px; }
 .audience-card p { font-size: .9rem; color: var(--muted); margin-top: 14px; margin-bottom: 24px; }
-.text-link { font-size: .84rem; font-weight: 600; }
+.text-link, .competition-details summary { font-size: .84rem; font-weight: 600; }
 .contact-link { display: inline-flex; align-items: center; min-height: 44px; }
 .audience-card .text-link { margin-top: auto; }
 .draft-note { font-size: .8rem; color: var(--draft); margin-top: 20px; }
@@ -171,6 +171,10 @@ summary { cursor: pointer; padding-block: 10px; }
 .timeline-item h3 { margin-top: 14px; font-size: 1.6rem; font-family: Georgia, serif; font-weight: 400; }
 .timeline-item p { color: var(--muted); }
 .timeline-item .text-link { display: inline-block; margin-top: 14px; }
+.competition-details { margin-top: 14px; }
+.competition-details summary { color: var(--green); }
+.competition-details .plain-list { margin-top: 12px; }
+.timeline-item p + p { margin-top: 16px; }
 .program-overview { display: grid; grid-template-columns: .9fr 1.1fr; gap: 30px; align-items: start; }
 .program-overview .audience-grid { grid-template-columns: repeat(2, 1fr); }
 .program-overview .audience-card { padding: 22px; }
