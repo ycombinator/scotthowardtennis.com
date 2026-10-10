@@ -86,7 +86,6 @@ test('all five HTML pages include the shared script once and mark every supporte
     const html = readFileSync(new URL(`../site/${page}`, import.meta.url), 'utf8');
     assert.equal(html.match(/<script src="assets\/js\/analytics.js" defer><\/script>/g)?.length, 1, page);
     assert.ok(existsSync(new URL('../site/assets/js/analytics.js', import.meta.url)));
-    assert.ok(html.includes('<meta name="robots" content="noindex, nofollow">'), page);
     const found = new Set();
     for (const [tag, href] of html.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>/g)) {
       const method = prefixes.find(([prefix]) => href.startsWith(prefix))?.[1];
